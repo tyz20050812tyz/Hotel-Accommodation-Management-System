@@ -197,9 +197,12 @@ public class HotelManagementApp {
     private static void addRoomMenu() throws SQLException {
         System.out.println("\n--- 添加房间 ---");
         String roomNumber = getStringInput("请输入房间号（1-10位）：");
-        String roomType = getStringInput("请输入房间类型（单人间/双人间/套房等）：");
+        // 允许输入拼音
+        String roomType = getStringInput("请输入房间类型（danrenjian/shuangrenjian/taofang等）：");
+        System.out.println("你输入的房间号：" + roomNumber + "，房间类型：" + roomType);
         String roomStatus = getStringInput("请输入房间状态（空闲/入住/维修）：");
         double price = getDoubleInput("请输入房间价格（保留2位小数）：");
+
 
         Room room = new Room();
         room.setRoomNumber(roomNumber);
@@ -222,8 +225,8 @@ public class HotelManagementApp {
             System.out.println("房间不存在！");
             return;
         }
-
-        String newRoomType = getStringInput("请输入新房型（当前：" + room.getRoomType() + "）：");
+        // 允许输入拼音
+        String newRoomType = getStringInput("请输入新房型（当前：" + room.getRoomType() + "，可用拼音输入）：");
         String newStatus = getStringInput("请输入新状态（空闲/入住/维修，当前：" + room.getRoomStatus() + "）：");
         double newPrice = getDoubleInput("请输入新价格（保留2位小数，当前：" + room.getPrice() + "）：");
 
@@ -240,7 +243,8 @@ public class HotelManagementApp {
      */
     private static void adjustPriceMenu() throws SQLException {
         System.out.println("\n--- 调整房型价格 ---");
-        String roomType = getStringInput("请输入目标房型（如单人间）：");
+        // 允许输入拼音
+        String roomType = getStringInput("请输入目标房型（如danrenjian）：");
         double newPrice = getDoubleInput("请输入新价格（保留2位小数）：");
 
 // 假设 PriceAdjustmentService 位于 com.hotel.service 包下，添加导入语句
@@ -414,6 +418,7 @@ Guest guest = new Guest();
 
     // 工具方法：获取字符串输入
     private static String getStringInput(String prompt) {
+        Scanner scanner = new Scanner(System.in);
         System.out.print(prompt);
         return scanner.nextLine().trim();
     }

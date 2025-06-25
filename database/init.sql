@@ -14,7 +14,7 @@ CREATE TABLE IF NOT EXISTS rooms (
     room_id SERIAL PRIMARY KEY,
     room_number VARCHAR(10) UNIQUE NOT NULL,
     room_type VARCHAR(20) NOT NULL,
-    room_status VARCHAR(10) NOT NULL CHECK (room_status IN ('空闲', '入住', '维修')),
+    room_status VARCHAR(10) NOT NULL CHECK (room_status IN ('kongxian', 'ruzhu', 'weixiu')),
     price NUMERIC(10,2) NOT NULL
 );
 
@@ -47,9 +47,9 @@ CREATE TABLE IF NOT EXISTS price_adjustments (
 
 -- 插入初始房间数据示例
 INSERT INTO rooms (room_number, room_type, room_status, price) VALUES
-('101', '单人间', '空闲', 299.00),
-('201', '双人间', '空闲', 499.00),
-('301', '套房', '维修', 899.00);
+('101', '单人间', 'kongxian', 299.00),
+('201', '双人间', 'kongxian', 499.00),
+('301', '套房', 'weixiu', 899.00);
 
 -- 插入初始价格调整记录示例
 INSERT INTO price_adjustments (room_type, original_price, new_price, adjustment_date) VALUES

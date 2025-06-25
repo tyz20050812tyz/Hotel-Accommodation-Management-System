@@ -30,17 +30,20 @@ public class CheckInService {
      */
     public boolean checkIn(int guestId, String roomNumber) throws SQLException {
         // 校验客人是否存在
-        Guest guest = guestDao.getGuestByIdCard(guestId + ""); // 示例简化，实际应通过ID查询
+        Guest guest = guestDao.getGuestById(guestId);
         if (guest == null) {
+            System.out.println("checkIn guest: " + guest+"不存在");
             return false;
         }
+
         // 校验房间是否可用
         Room room = roomDao.getRoomByNumber(roomNumber);
-        if (room == null || !"空闲".equals(room.getRoomStatus())) {
+        if (room == null || !"kongxian".equals(room.getRoomStatus())) {
+            System.out.println("checkIn room: " + room+"不可用");
             return false;
         }
         // 更新房间状态为入住
-        room.setRoomStatus("入住");
+        room.setRoomStatus("ruzhu");
         roomDao.updateRoom(room);
         // 记录入住信息
         CheckIn checkIn = new CheckIn();
@@ -60,7 +63,7 @@ public class CheckInService {
      */
     public double checkOut(String roomNumber, double otherConsumption) throws SQLException {
         Room room = roomDao.getRoomByNumber(roomNumber);
-        if (room == null || !"入住".equals(room.getRoomStatus())) {
+        if (room == null || !"ruzhu".equals(room.getRoomStatus())) {
             return -1;
         }
         // 查询未退房的入住记录
@@ -79,7 +82,7 @@ public class CheckInService {
         checkIn.setTotalPrice(total);
         checkInDao.updateCheckOut(checkIn.getCheckInId(), checkIn.getCheckOutTime(), total);
         // 更新房间状态为空闲
-        room.setRoomStatus("空闲");
+        room.setRoomStatus("kongxian");
         roomDao.updateRoom(room);
         return total;
     }

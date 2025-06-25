@@ -27,8 +27,36 @@ public class GuestDao {
             pstmt.setString(2, guest.getIdCard());
             pstmt.setString(3, guest.getPhone());
             pstmt.executeUpdate();
+            /**
+     * 根据客人ID查询客人信息
+     * @param guestId 客人ID
+     * @return 客人对象（不存在则返回null）
+     * @throws SQLException 数据库操作异常
+     */
+
         }
     }
+    public Guest getGuestById(int guestId) throws SQLException {
+        String sql = "SELECT * FROM guests WHERE guest_id = ?";
+        try (Connection conn = JdbcUtil.getConnection();
+             PreparedStatement pstmt = conn.prepareStatement(sql)) {
+            pstmt.setInt(1, guestId);
+            try (ResultSet rs = pstmt.executeQuery()) {
+                if (rs.next()) {
+                    Guest guest = new Guest();
+                    guest.setGuestId(rs.getInt("guest_id"));
+                    guest.setName(rs.getString("name"));
+                    guest.setIdCard(rs.getString("id_card"));
+                    guest.setPhone(rs.getString("phone"));
+                    return guest;
+                }
+                return null;
+            }
+        }
+    }
+
+
+
 
     /**
      * 根据客人ID删除客人

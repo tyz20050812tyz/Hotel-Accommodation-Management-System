@@ -33,7 +33,7 @@ public class RoomService {
      */
     public boolean updateRoom(Room room) throws SQLException {
         // 校验状态合法性
-        if (!room.getRoomStatus().matches("^(空闲|入住|维修)$")) {
+        if (!room.getRoomStatus().matches("^(kongxian|ruzhu|weixiu)$")) {
             return false;
         }
         roomDao.updateRoom(room);
@@ -73,7 +73,7 @@ public class RoomService {
      */
     public boolean updateRoomStatus(int roomId, String newStatus) throws SQLException {
         // 校验状态合法性
-        if (!newStatus.matches("^(空闲|入住|维修)$")) {
+        if (!newStatus.matches("^(kongxian|ruzhu|weixiu)$")) {
             return false;
         }
         Room room = roomDao.getRoomByNumber(roomId + ""); // 实际应通过ID查询，此处示例简化
@@ -95,7 +95,7 @@ public class RoomService {
 // 导入 ArrayList 类
 List<Room> availableRooms = new ArrayList<>();
         for (Room room : allRooms) {
-            if ("空闲".equals(room.getRoomStatus())) {
+            if ("kongxian".equals(room.getRoomStatus())) {
                 availableRooms.add(room);
             }
         }
@@ -114,7 +114,7 @@ List<Room> availableRooms = new ArrayList<>();
             return false;
         }
         // 非空闲状态房间不可删除
-        if (!"空闲".equals(room.getRoomStatus())) {
+        if (!"kongxian".equals(room.getRoomStatus())) {
             return false;
         }
         roomDao.deleteRoom(room.getRoomId());

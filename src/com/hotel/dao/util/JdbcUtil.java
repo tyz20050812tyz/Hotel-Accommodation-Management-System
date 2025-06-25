@@ -10,8 +10,8 @@ import java.sql.*;
  */
 public class JdbcUtil {
     // PostgreSQL连接信息（示例值，实际需根据环境修改）
-    private static final String URL = "jdbc:postgresql://localhost:5432/hotel_management";
-    private static final String USER = "postgres";
+    private static final String URL = "jdbc:postgresql://localhost:5433/hotel_management";
+    private static final String USER = "root";
     private static final String PASSWORD = "123456";
 
     /**
