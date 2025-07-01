@@ -5,17 +5,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>圆形图片示例</title>
+    
+</head>
+<body>
+<title>圆形图片示例</title>
     <style>
         .circular-image {
-            width: 150px;
-            height: 150px;
+            width: 80px;
+            height: 80px;
             border-radius: 50%; /* 设置为圆形 */
             object-fit: cover; /* 保证图片填满整个圆形区域 */
         }
     </style>
-</head>
-<body>
     <div align="center">
         <img src="/img/LOGO.jpeg" alt="Hotel Logo" class="circular-image">
         <h2>智能、高效的酒店运营管理解决方案</h2>
