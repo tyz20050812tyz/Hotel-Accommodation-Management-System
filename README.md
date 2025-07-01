@@ -8,17 +8,8 @@
     
 </head>
 <body>
-<title>圆形图片示例</title>
-    <style>
-        .circular-image {
-            width: 80px;
-            height: 80px;
-            border-radius: 50%; /* 设置为圆形 */
-            object-fit: cover; /* 保证图片填满整个圆形区域 */
-        }
-    </style>
     <div align="center">
-        <img src="/img/LOGO.jpeg" alt="Hotel Logo" class="circular-image">
+         <img src="https://github.com/tyz20050812tyz/Hotel-Accommodation-Management-System/raw/main/img/LOGO.jpeg" alt="Hotel Logo" width="80" style="border-radius: 50%;">
         <h2>智能、高效的酒店运营管理解决方案</h2>
     </div>
 </body>
