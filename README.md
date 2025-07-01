@@ -9,7 +9,7 @@
 </head>
 <body>
     <div align="center">
-         <img src="https://github.com/tyz20050812tyz/Hotel-Accommodation-Management-System/raw/main/img/LOGO.jpeg" alt="Hotel Logo" width="80" style="border-radius: 50%;">
+         <img src="https://github.com/tyz20050812tyz/Hotel-Accommodation-Management-System/raw/main/img/LOGO.jpeg" alt="Hotel Logo" width="140" style="border-radius: 50%;">
         <h2>智能、高效的酒店运营管理解决方案</h2>
     </div>
 </body>
